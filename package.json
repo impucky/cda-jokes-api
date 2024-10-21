@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon src/app.js"
+    "start": "nodemon src/app.js",
+    "seed": "node src/utils/seedDatabase.js"
   },
   "author": "Raphaël Beaugiraud",
   "license": "ISC",
