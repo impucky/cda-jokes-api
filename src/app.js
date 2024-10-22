@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const connect = require("./utils/connect");
 const swaggerDocs = require("./utils/swagger");
 
@@ -7,6 +8,7 @@ const PORT = process.env.PORT || 3000;
 const url = process.env.RENDER_EXTERNAL_URL || `http://localhost:${PORT}`;
 
 app.use(express.json());
+app.use(cors());
 app.use("/v1", require("./routes/v1/jokeRoutes"));
 
 swaggerDocs(app);
