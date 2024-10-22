@@ -6,8 +6,11 @@ exports.createJoke = async (req, res) => {
     const joke = await Joke.create(req.body);
     res.status(201).json(joke);
   } catch (error) {
+    if (error.name === "SequelizeValidationError") {
+      return res.status(400).json({ error: error.errors.map((e) => e.message) });
+    }
     console.error(error);
-    res.status(500).json({ error: "Failed to add joke" });
+    res.status(500).json({ error: "Server error" });
   }
 };
 
@@ -27,7 +30,7 @@ exports.getJokeById = async (req, res) => {
     if (joke) {
       res.status(200).json(joke);
     } else {
-      res.status(404).json({ error: `Couldn't find joke with id ${req.params.id}` });
+      res.status(404).json({ error: `Couldn't find a joke with id ${req.params.id}` });
     }
   } catch (error) {
     console.error(error);
