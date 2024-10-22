@@ -18,5 +18,6 @@ app.use((req, res) => {
 app.listen(PORT, async () => {
   console.info(`Server is running at ${url}`);
   console.log(`Docs available at ${url}/api-docs`);
+  console.log(process.env.RENDER_EXTERNAL_URL);
   await connect();
 });
