@@ -112,6 +112,7 @@ router.get("/jokes/random", getRandomJoke);
  *         required: true
  *         schema:
  *           type: integer
+ *           minimum: 1
  *         description: The ID of the joke to retrieve
  *     responses:
  *       200:

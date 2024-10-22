@@ -20,11 +20,15 @@ exports.getAllJokes = async (req, res) => {
     res.status(200).json(jokes);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Failed to retrieve jokes" });
+    res.status(500).json({ error: "Server error" });
   }
 };
 
 exports.getJokeById = async (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  if (isNaN(id) || id <= 0) {
+    return res.status(400).json({ error: "ID must be a positive integer" });
+  }
   try {
     const joke = await Joke.findOne({ where: { id: req.params.id } });
     if (joke) {
@@ -34,7 +38,7 @@ exports.getJokeById = async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Failed to retrieve joke" });
+    res.status(500).json({ error: "Server error" });
   }
 };
 
@@ -46,10 +50,10 @@ exports.getRandomJoke = async (req, res) => {
     if (randomJoke) {
       res.status(200).json(randomJoke);
     } else {
-      res.status(500).json({ error: "Couldn't find a joke" });
+      res.status(500).json({ error: "Server error" });
     }
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Failed to retrieve random joke" });
+    res.status(500).json({ error: "Server error" });
   }
 };
