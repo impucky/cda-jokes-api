@@ -18,4 +18,6 @@ Projet pour la formation Simplon _Concepteur-ice développeur-se d'applications_
 `npm run start` Démarre le serveur
 
 
-Client: [https://github.com/impucky/cda-jokes-api](https://github.com/impucky/cda-jokes-api)
+Live: [https://cda-jokes-api.onrender.com/](https://cda-jokes-api.onrender.com/)
+
+Client: [https://github.com/impucky/cda-jokes-client](https://github.com/impucky/cda-jokes-client)
